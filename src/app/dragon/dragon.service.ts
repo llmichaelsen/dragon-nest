@@ -28,6 +28,14 @@ export class DragonService {
       catchError(this.errorHandl)
     )
   }
+  
+  create(dragon: Dragon): Observable<any>{
+    return this.http.post<Dragon>(this.baseurl, JSON.stringify(dragon), this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    )
+  }
 
   errorHandl(error) {
     let errorMessage = '';

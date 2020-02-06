@@ -1,0 +1,43 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Novo Dragão</h4>
+                        <p class="card-category">Preencha os campos abaixo</p>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="dragonForm" (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Dados</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <mat-form-field class="example-full-width">
+                                        <input formControlName="name" matInput placeholder="Nome">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field>
+                                        <mat-label>Tipo</mat-label>
+                                        <mat-select formControlName="type">
+                                            <mat-option [value]="'Challenger'">Challenger</mat-option>
+                                            <mat-option [value]="'Challenger'">Medium</mat-option>
+                                            <mat-option [value]="'Challenger'">Easy</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <hr>
+                            <button mat-raised-button [routerLink]="['/dragons']" type="button" class="btn pull-left">Voltar</button>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Salvar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

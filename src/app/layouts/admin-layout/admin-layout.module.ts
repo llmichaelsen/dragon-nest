@@ -11,8 +11,10 @@ import {
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatSelectModule
+  MatSelectModule,
+  MatSnackBarModule
 } from '@angular/material';
+import { NewDragonComponent } from '../../dragon/new-dragon/new-dragon.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -25,9 +27,11 @@ import {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatSnackBarModule
   ],
   declarations: [
-    TableListComponent
+    TableListComponent,
+    NewDragonComponent
   ]
 })
 

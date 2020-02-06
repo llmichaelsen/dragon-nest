@@ -19,6 +19,12 @@ export class TableListComponent implements OnInit {
        res  => this.dragonList = res,
        error => console.log(error)
     );
+  /*
+    this.dragonService.create(new Dragon('Julius', 'Challenger', [])).subscribe(
+      res => console.log(res),
+      error => console.log(error)
+    );
+    */
   }
 
 }
