@@ -12,7 +12,10 @@ import {
   MatFormFieldModule,
   MatTooltipModule,
   MatSelectModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule
 } from '@angular/material';
 import { NewDragonComponent } from '../../dragon/new-dragon/new-dragon.component';
 @NgModule({
@@ -27,7 +30,10 @@ import { NewDragonComponent } from '../../dragon/new-dragon/new-dragon.component
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   declarations: [
     TableListComponent,

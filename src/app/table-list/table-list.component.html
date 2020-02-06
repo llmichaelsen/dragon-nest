@@ -1,41 +1,69 @@
 <div class="main-content">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title ">Lista de dragões</h4>
-                      <p class="card-category"> Listagem detalhada de cada dragão</p>
-                  </div>
-                  <div class="card-body">
-                      <div class="table-responsive">
-                          <table class="table">
-                              <thead class=" text-primary">
-                                  <th>Id</th>
-                                  <th>Data de criação</th>
-                                  <th>Nome</th>
-                                  <th>Tipo</th>
-                                  <th>Histórias</th>
-                              </thead>
-                              <tbody>
-                                  <tr *ngFor="let dragon of dragonList">
-                                      <td>{{dragon.id}}</td>
-                                      <td>{{dragon.createdAt}}</td>
-                                      <td>{{dragon.name}}</td>
-                                      <td>{{dragon.type}}</td>
-                                      <td>{{dragon.histories}}</td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Lista de dragões</h4>
+                        <p class="card-category"> Listagem detalhada de cada dragão</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="mat-elevation-z8">
+                            <table mat-table [dataSource]="dataSource" matSort>
+
+                                <!-- ID Column -->
+                                <ng-container matColumnDef="id">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                                </ng-container>
+
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                                </ng-container>
+
+                                <!-- Color Column -->
+                                <ng-container matColumnDef="type">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.type}} </td>
+                                </ng-container>
+
+                                <!-- Color Column -->
+                                <ng-container matColumnDef="acoes">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ações </th>
+                                    <td mat-cell *matCellDef="let row">  
+                                        <a [routerLink]="'/dragons/new'">
+                                            <button mat-mini-fab color="primary">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                        </a>
+                                        <a [routerLink]="'/dragons/new'">
+                                            <button mat-mini-fab color="warn">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                                </tr>
+                            </table>
+
+                            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 <div class="float-btn">
     <a [routerLink]="'/dragons/new'">
-        <button mat-fab><i class="material-icons">add</i></button>
+        <button mat-fab color="primary">
+            <i class="material-icons">add</i>
+        </button>
     </a>
 </div>

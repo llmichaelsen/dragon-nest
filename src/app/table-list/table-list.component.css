@@ -4,3 +4,11 @@
     bottom: 30px;
     right: 30px;
 }
+
+.mat-table {
+    width: 100%;
+}
+
+.mat-mini-fab {
+    margin: 5px;
+}
