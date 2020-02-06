@@ -37,6 +37,14 @@ export class DragonService {
     )
   }
 
+  delete(dragon: Dragon){
+    return this.http.delete<Dragon>(this.baseurl + '/' + dragon.id, this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    )
+  }
+
   errorHandl(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

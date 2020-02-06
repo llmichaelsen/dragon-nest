@@ -8,7 +8,7 @@
                         <p class="card-category"> Listagem detalhada de cada dragão</p>
                     </div>
                     <div class="card-body">
-                        <div class="mat-elevation-z8">
+                        <div class="mat-elevation-z8 table-responsive">
                             <table mat-table [dataSource]="dataSource" matSort>
 
                                 <!-- ID Column -->
@@ -38,7 +38,7 @@
                                                 <i class="material-icons">edit</i>
                                             </button>
                                         </a>
-                                        <a [routerLink]="'/dragons/new'">
+                                        <a (click)="deleteDragon(row)">
                                             <button mat-mini-fab color="warn">
                                                 <i class="material-icons">delete</i>
                                             </button>

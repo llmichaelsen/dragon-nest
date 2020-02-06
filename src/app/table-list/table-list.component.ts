@@ -5,6 +5,7 @@ import { Dragon } from '../dragon/dragon';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-table-list',
@@ -14,7 +15,6 @@ import {MatTableDataSource} from '@angular/material/table';
 export class TableListComponent implements OnInit {
 
   dragonList: Dragon[] = [];
-  obs;
 
   displayedColumns: string[] = ['id', 'name', 'type', 'acoes'];
   dataSource: MatTableDataSource<Dragon>;
@@ -22,8 +22,14 @@ export class TableListComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private dragonService: DragonService) { 
+  constructor(
+    private dragonService: DragonService,
+    private _snackBar: MatSnackBar) { 
     
+  }
+
+  ngOnInit() {
+    this.loadDragons();
   }
 
   setDragons(dragons){
@@ -31,14 +37,34 @@ export class TableListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(dragons);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }  
+
+  loadDragons(){
+    this.dragonService.getAll().subscribe(
+      res  => this.setDragons(res),
+      error => console.log(error)
+   );
   }
 
-  ngOnInit() {
-    this.setDragons([]);
-    this.obs = this.dragonService.getAll().subscribe(
-       res  => this.setDragons(res),
-       error => console.log(error)
-    );
+  deleteDragon(dragon: Dragon) {
+    var r = confirm("Você tem certeza disso?");
+    if (r) {
+      this.dragonService.delete(dragon).subscribe(
+        res => this.dragonDeleted(dragon),
+        error => console.log(error)
+      )
+    } 
+  }
+
+  private dragonDeleted(dragon){
+    this.loadDragons();
+    this.openSnackBar(`Dragão ${dragon.name} deletado com sucesso!`, 'Fechar' )
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
 }
