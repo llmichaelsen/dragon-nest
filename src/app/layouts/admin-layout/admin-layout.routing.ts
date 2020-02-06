@@ -7,6 +7,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: '', redirectTo: 'dragons' },
     { path: 'dragons', component: TableListComponent },
     { path: 'dragons/new', component: NewDragonComponent },
+    { path: 'dragons/edit/:id', component: NewDragonComponent },
     { path: 'krakens', redirectTo: 'dragons' },
     { path: 'yetis', redirectTo: 'dragons' },
 ];

@@ -28,6 +28,14 @@ export class DragonService {
       catchError(this.errorHandl)
     )
   }
+
+  getDragon(id): Observable<any> {
+    return this.http.get<Dragon>(this.baseurl + '/' + id)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    )
+  }
   
   create(dragon: Dragon): Observable<any>{
     return this.http.post<Dragon>(this.baseurl, JSON.stringify(dragon), this.httpOptions)
@@ -39,6 +47,14 @@ export class DragonService {
 
   delete(dragon: Dragon){
     return this.http.delete<Dragon>(this.baseurl + '/' + dragon.id, this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    )
+  }
+
+  update(id, dragon): Observable<any> {
+    return this.http.put<Dragon>(this.baseurl + '/' + id, JSON.stringify(dragon), this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.errorHandl)

@@ -33,7 +33,7 @@
                                 <ng-container matColumnDef="acoes">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Ações </th>
                                     <td mat-cell *matCellDef="let row">  
-                                        <a [routerLink]="'/dragons/new'">
+                                        <a [routerLink]="'/dragons/edit/' + row.id">
                                             <button mat-mini-fab color="primary">
                                                 <i class="material-icons">edit</i>
                                             </button>

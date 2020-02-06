@@ -4,8 +4,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title">Novo Dragão</h4>
-                        <p class="card-category">Preencha os campos abaixo</p>
+                        <h4 class="card-title">{{editId ? 'Editar' : 'Novo'}} Dragão</h4>
+                        <p class="card-category">{{editId ? 'Edite os campos abaixo como desejado' : 'Preencha os campos abaixo'}}</p>
                     </div>
                     <div class="card-body">
                         <form [formGroup]="dragonForm" (ngSubmit)="onSubmit()">
