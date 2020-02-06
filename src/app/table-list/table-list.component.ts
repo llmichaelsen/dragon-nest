@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DragonService } from '../dragon/dragon.service';
+import { Dragon } from '../dragon/dragon';
 
 @Component({
   selector: 'app-table-list',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableListComponent implements OnInit {
 
-  constructor() { }
+  dragonList: Dragon[] = [];
+  obs;
+
+  constructor(private dragonService: DragonService) { }
 
   ngOnInit() {
+    this.obs = this.dragonService.getAll().subscribe(
+       res  => this.dragonList = res,
+       error => console.log(error)
+    );
   }
 
 }

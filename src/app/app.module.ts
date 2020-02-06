@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DragonService } from './dragon/dragon.service';
 
 @NgModule({
   imports: [
@@ -22,14 +24,15 @@ import { LoginComponent } from './login/login.component';
     HttpModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     LoginComponent
   ],
-  providers: [],
+  providers: [DragonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
