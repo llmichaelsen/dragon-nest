@@ -1,0 +1,16 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="card card-profile">
+      <div class="card-avatar">
+        <img class="img" src="./assets/img/faces/dragon.png" />
+      </div>
+      <div class="card-body">
+        <h6 class="card-category text-gray">Criado em: {{dragon.createdAt}}</h6>
+        <h4 class="card-title">{{dragon.name}}</h4>
+        <h6 class="card-title">{{dragon.type}}</h6>
+        <p class="card-description" *ngFor="let hist of dragon.histories">{{hist}}</p>
+      </div>
+    </div>
+    <button mat-raised-button [routerLink]="['/dragons']" type="button" class="btn pull-left">Voltar</button>
+  </div>
+</div>

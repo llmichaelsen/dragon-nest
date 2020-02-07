@@ -15,6 +15,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DragonService } from './dragon/dragon.service';
+import { HelperService } from './shared/helper.service';
 
 @NgModule({
   imports: [
@@ -32,7 +33,7 @@ import { DragonService } from './dragon/dragon.service';
     AdminLayoutComponent,
     LoginComponent
   ],
-  providers: [DragonService],
+  providers: [DragonService, HelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,6 +18,7 @@ import {
   MatSortModule
 } from '@angular/material';
 import { NewDragonComponent } from '../../dragon/new-dragon/new-dragon.component';
+import { DetailDragonComponent } from '../../dragon/detail-dragon/detail-dragon.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -37,7 +38,8 @@ import { NewDragonComponent } from '../../dragon/new-dragon/new-dragon.component
   ],
   declarations: [
     TableListComponent,
-    NewDragonComponent
+    NewDragonComponent,
+    DetailDragonComponent
   ]
 })
 
