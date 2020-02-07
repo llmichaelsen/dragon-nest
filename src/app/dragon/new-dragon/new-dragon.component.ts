@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material';
 import { DragonService } from '../dragon.service';
 import { Dragon } from '../dragon';
 import { Router, ActivatedRoute } from '@angular/router';
+import { HelperService } from '../../shared/helper.service';
 
 @Component({
   selector: 'app-new-dragon',
@@ -21,6 +22,7 @@ export class NewDragonComponent implements OnInit {
     private dragonService: DragonService,
     private router: Router,
     private route: ActivatedRoute,
+    private helperServ: HelperService
   ) { }
 
   ngOnInit() {
@@ -61,7 +63,7 @@ export class NewDragonComponent implements OnInit {
   onSubmit(){
 
     if (this.dragonForm.invalid) {
-      this.openSnackBar('Verifique os campos inválidos', 'Fechar' )
+      this.helperServ.openSnackBar('Verifique os campos inválidos', 'Fechar' )
       return;
     }
 
@@ -91,12 +93,7 @@ export class NewDragonComponent implements OnInit {
 
   finalizarOperacao(){
     this.router.navigate(['/dragons/']);
-    this.openSnackBar(`Dragão ${this.editId ? 'editado' : 'criado'} com sucesso`, 'Fechar' );
+    this.helperServ.openSnackBar(`Dragão ${this.editId ? 'editado' : 'criado'} com sucesso`, 'Fechar' );
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-    });
-  }
 }

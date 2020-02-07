@@ -12,7 +12,6 @@ import {
   MatFormFieldModule,
   MatTooltipModule,
   MatSelectModule,
-  MatSnackBarModule,
   MatTableModule,
   MatPaginatorModule,
   MatSortModule
@@ -31,7 +30,6 @@ import { DetailDragonComponent } from '../../dragon/detail-dragon/detail-dragon.
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    MatSnackBarModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule

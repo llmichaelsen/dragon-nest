@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DragonService } from './dragon/dragon.service';
 import { HelperService } from './shared/helper.service';
+import { LoginService } from './login/login.service';
+import { MatSnackBarModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -26,14 +28,15 @@ import { HelperService } from './shared/helper.service';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     LoginComponent
   ],
-  providers: [DragonService, HelperService],
+  providers: [DragonService, HelperService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatSnackBar } from '@angular/material';
+import { HelperService } from '../shared/helper.service';
 
 @Component({
   selector: 'app-table-list',
@@ -24,7 +25,8 @@ export class TableListComponent implements OnInit {
 
   constructor(
     private dragonService: DragonService,
-    private _snackBar: MatSnackBar) { 
+    private _snackBar: MatSnackBar,
+    private helperServ: HelperService) { 
     
   }
 
@@ -58,13 +60,7 @@ export class TableListComponent implements OnInit {
 
   private dragonDeleted(dragon){
     this.loadDragons();
-    this.openSnackBar(`Dragão ${dragon.name} deletado com sucesso!`, 'Fechar' )
-  }
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-    });
+    this.helperServ.openSnackBar(`Dragão ${dragon.name} deletado com sucesso!`, 'Fechar' )
   }
 
 }
