@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   onSubmit(){
 
     if (this.loginForm.invalid) {
-      this.helperServ.openSnackBar('E-mail ou senha inválido', 'Fechar');
+      this.helperServ.openSnackBar('E-mail e/ou senha inválidos', 'Fechar');
       return;
     }     
     this.loginServ.login(this.loginForm.value.email);

@@ -11,6 +11,8 @@
         <p class="card-description" *ngFor="let hist of dragon.histories">{{hist}}</p>
       </div>
     </div>
-    <button mat-raised-button [routerLink]="['/dragons']" type="button" class="btn pull-left">Voltar</button>
+    <a [routerLink]="['/dragons']">
+      <button mat-raised-button  type="button" class="btn pull-left">Voltar</button>
+    </a>
   </div>
 </div>

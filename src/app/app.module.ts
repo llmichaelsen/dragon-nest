@@ -36,7 +36,7 @@ import { MatSnackBarModule } from '@angular/material';
     AdminLayoutComponent,
     LoginComponent
   ],
-  providers: [DragonService, HelperService, LoginService],
+  providers: [DragonService, HelperService, LoginService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
