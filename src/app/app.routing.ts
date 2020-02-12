@@ -7,7 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/auth.guard';
 
-const routes: Routes =[
+const routes: Routes = [
   {
     path: '',
     component: AdminLayoutComponent,
@@ -21,14 +21,13 @@ const routes: Routes =[
     path: 'login',
     component: LoginComponent
   },
-  
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes,{
+    RouterModule.forRoot(routes, {
        useHash: true
     })
   ],

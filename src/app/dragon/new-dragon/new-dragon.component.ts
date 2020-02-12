@@ -15,7 +15,7 @@ export class NewDragonComponent implements OnInit {
 
   dragonForm: FormGroup;
   editId;
-  
+
   constructor(
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
@@ -26,31 +26,31 @@ export class NewDragonComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.editId = this.route.snapshot.paramMap.get("id")
+    this.editId = this.route.snapshot.paramMap.get('id')
 
     this.initForm();
 
-    if(this.editId){
+    if (this.editId) {
       this.loadDragonInfo();
     }
   }
 
-  initForm(){
+  initForm() {
     this.dragonForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       type: ['', [Validators.required]],
       histories: [[]]
-    });  
-  }  
+    });
+  }
 
-  loadDragonInfo(){
+  loadDragonInfo() {
     this.dragonService.getDragon(this.editId).subscribe(
       res => this.setDragonForm(res),
       error => console.log(error)
     )
   }
 
-  setDragonForm(dragon){
+  setDragonForm(dragon) {
     this.dragonForm.setValue({
       name: dragon.name,
       type: dragon.type,
@@ -58,40 +58,37 @@ export class NewDragonComponent implements OnInit {
     });
   }
 
- 
-
-  onSubmit(){
+  onSubmit() {
 
     if (this.dragonForm.invalid) {
       this.helperServ.openSnackBar('Verifique os campos inválidos', 'Fechar' )
       return;
     }
 
-    let dragon = new Dragon(this.dragonForm.value.name, this.dragonForm.value.type, []);
+    const dragon = new Dragon(this.dragonForm.value.name, this.dragonForm.value.type, []);
 
-    if(this.editId){
+    if (this.editId) {
       this.editDragon(dragon);
-    } else {    
+    } else {
       this.createDragon(dragon);
     }
-    
   }
 
-  editDragon(dragon){
+  editDragon(dragon) {
     this.dragonService.update(this.editId, dragon).subscribe(
       res => this.finalizarOperacao(),
       error => console.log(error)
     )
   }
 
-  createDragon(dragon){
+  createDragon(dragon) {
     this.dragonService.create(dragon).subscribe(
       res => this.finalizarOperacao(),
       error => console.log(error)
     );
   }
 
-  finalizarOperacao(){
+  finalizarOperacao() {
     this.router.navigate(['/dragons/']);
     this.helperServ.openSnackBar(`Dragão ${this.editId ? 'editado' : 'criado'} com sucesso`, 'Fechar' );
   }

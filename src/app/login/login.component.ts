@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     this.initForm();
   }
 
-  initForm(){
+  initForm() {
 
     this.loginForm = this.formBuilder.group({
         email: ['', [Validators.required, Validators.email]],
@@ -31,12 +31,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit(){
+  onSubmit() {
 
     if (this.loginForm.invalid) {
       this.helperServ.openSnackBar('E-mail e/ou senha inválidos', 'Fechar');
       return;
-    }     
+    }
     this.loginServ.login(this.loginForm.value.email);
   }
 

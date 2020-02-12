@@ -10,29 +10,29 @@ export class LoginService {
     private _router: Router
   ) { }
 
-  login(email){
-    
+  login(email) {
+
     localStorage.setItem('user', email);
     this._router.navigate(['/']);
   }
 
-  logout(){
+  logout() {
 
     localStorage.removeItem('user');
     this._router.navigate(['/login']);
   }
 
-  getUser():string {
+  getUser(): string {
 
-    if (localStorage.getItem('user')){
+    if (localStorage.getItem('user')) {
       return localStorage.getItem('user')
     }
     return ''
   }
 
-  isLogged():boolean {
-    
-    if (localStorage.getItem('user')){
+  isLogged(): boolean {
+
+    if (localStorage.getItem('user')) {
       return true
     }
     return false

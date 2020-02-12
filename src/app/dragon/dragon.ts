@@ -5,9 +5,9 @@ export class Dragon {
     type: string;
     histories: string[];
 
-    constructor ( name, type, histories ){
+    constructor ( name, type, histories ) {
         this.name = name;
         this.type = type
         this.histories = histories;
     }
- }
+}

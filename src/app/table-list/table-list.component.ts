@@ -26,22 +26,20 @@ export class TableListComponent implements OnInit {
   constructor(
     private dragonService: DragonService,
     private _snackBar: MatSnackBar,
-    private helperServ: HelperService) { 
-    
-  }
+    private helperServ: HelperService) {}
 
   ngOnInit() {
     this.loadDragons();
   }
 
-  setDragons(dragons){
+  setDragons(dragons) {
     this.dragonList = dragons;
     this.dataSource = new MatTableDataSource(dragons);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  }  
+  }
 
-  loadDragons(){
+  loadDragons() {
     this.dragonService.getAll().subscribe(
       res  => this.setDragons(res),
       error => console.log(error)
@@ -49,16 +47,16 @@ export class TableListComponent implements OnInit {
   }
 
   deleteDragon(dragon: Dragon) {
-    var r = confirm("Você tem certeza disso?");
+    const r = confirm('Você tem certeza disso?');
     if (r) {
       this.dragonService.delete(dragon).subscribe(
         res => this.dragonDeleted(dragon),
         error => console.log(error)
       )
-    } 
+    }
   }
 
-  private dragonDeleted(dragon){
+  private dragonDeleted(dragon) {
     this.loadDragons();
     this.helperServ.openSnackBar(`Dragão ${dragon.name} deletado com sucesso!`, 'Fechar' )
   }

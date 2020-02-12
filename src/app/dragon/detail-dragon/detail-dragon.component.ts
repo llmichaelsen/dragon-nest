@@ -20,7 +20,7 @@ export class DetailDragonComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get("id")
+    const id = this.route.snapshot.paramMap.get('id')
 
     this.dragonService.getDragon(id).subscribe(
       res => this.setDragon(res),
@@ -28,7 +28,7 @@ export class DetailDragonComponent implements OnInit {
     )
   }
 
-  setDragon(dragon){
+  setDragon(dragon) {
     this.dragon = dragon;
     this.dragon.createdAt = this.helperServ.datetimeToString(dragon.createdAt);
   }

@@ -23,14 +23,14 @@ export class NavbarComponent implements OnInit {
           this.sidebarVisible = false;
     }
 
-    ngOnInit(){
+    ngOnInit() {
       this.user = this.loginServ.getUser();
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
       this.router.events.subscribe((event) => {
         this.sidebarClose();
-         var $layer: any = document.getElementsByClassName('close-layer')[0];
+        const $layer: any = document.getElementsByClassName('close-layer')[0];
          if ($layer) {
            $layer.remove();
            this.mobile_menu_visible = 0;
@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit {
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const body = document.getElementsByTagName('body')[0];
-        setTimeout(function(){
+        setTimeout(function() {
             toggleButton.classList.add('toggled');
         }, 500);
 
@@ -58,7 +58,7 @@ export class NavbarComponent implements OnInit {
     sidebarToggle() {
         // const toggleButton = this.toggleButton;
         // const body = document.getElementsByTagName('body')[0];
-        var $toggle = document.getElementsByClassName('navbar-toggler')[0];
+        const $toggle = document.getElementsByClassName('navbar-toggler')[0];
 
         if (this.sidebarVisible === false) {
             this.sidebarOpen();
@@ -66,8 +66,9 @@ export class NavbarComponent implements OnInit {
             this.sidebarClose();
         }
         const body = document.getElementsByTagName('body')[0];
+        let $layer;
 
-        if (this.mobile_menu_visible == 1) {
+        if (this.mobile_menu_visible === 1) {
             // $('html').removeClass('nav-open');
             body.classList.remove('nav-open');
             if ($layer) {
@@ -83,13 +84,13 @@ export class NavbarComponent implements OnInit {
                 $toggle.classList.add('toggled');
             }, 430);
 
-            var $layer = document.createElement('div');
+            $layer = document.createElement('div');
             $layer.setAttribute('class', 'close-layer');
 
 
             if (body.querySelectorAll('.main-panel')) {
                 document.getElementsByClassName('main-panel')[0].appendChild($layer);
-            }else if (body.classList.contains('off-canvas-sidebar')) {
+            } else if (body.classList.contains('off-canvas-sidebar')) {
                 document.getElementsByClassName('wrapper-full-page')[0].appendChild($layer);
             }
 
@@ -97,7 +98,7 @@ export class NavbarComponent implements OnInit {
                 $layer.classList.add('visible');
             }, 100);
 
-            $layer.onclick = function() { //asign a function
+            $layer.onclick = function() { // asign a function
               body.classList.remove('nav-open');
               this.mobile_menu_visible = 0;
               $layer.classList.remove('visible');
@@ -113,18 +114,18 @@ export class NavbarComponent implements OnInit {
         }
     };
 
-    logout(){
+    logout() {
         this.loginServ.logout();
     }
 
-    getTitle(){
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
+    getTitle() {
+      let titlee = this.location.prepareExternalUrl(this.location.path());
+      if (titlee.charAt(0) === '#') {
           titlee = titlee.slice( 1 );
       }
 
-      for(var item = 0; item < this.listTitles.length; item++){
-          if(this.listTitles[item].path === titlee){
+      for (let item = 0; item < this.listTitles.length; item++) {
+          if (this.listTitles[item].path === titlee) {
               return this.listTitles[item].title;
           }
       }
