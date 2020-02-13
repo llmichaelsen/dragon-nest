@@ -17,7 +17,9 @@ export class DetailDragonComponent implements OnInit {
     private route: ActivatedRoute,
     private dragonService: DragonService,
     private helperServ: HelperService
-  ) { }
+  ) {
+    this.dragon = new Dragon('', '', [])
+  }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id')
